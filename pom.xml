@@ -35,7 +35,17 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.60.Final</version>
         </dependency>
-</dependencies>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.14</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
