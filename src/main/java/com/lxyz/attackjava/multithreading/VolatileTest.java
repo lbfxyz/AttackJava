@@ -2,7 +2,9 @@ package com.lxyz.attackjava.multithreading;
 
 import org.openjdk.jol.info.ClassLayout;
 
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author lbf
@@ -16,10 +18,9 @@ public class VolatileTest {
 
    /* private static AtomicInteger race = new AtomicInteger(0);*/
 
-    public synchronized static void increase() {
+    public static void increase() {
         race++;
 //        race.incrementAndGet();
-        System.out.println(ClassLayout.parseInstance(race).toPrintable());
     }
 
     public static volatile boolean shutdown;
@@ -42,30 +43,33 @@ public class VolatileTest {
             shutdown();
         });
 
+
+        ReentrantLock lock = new ReentrantLock();
         Thread[] threads = new Thread[THREAD_COUNT];
 
         for (int i = 0; i < THREAD_COUNT; i++) {
 
             threads[i] = new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {
+                    lock.lock();
                     increase();
+                    lock.unlock();
                 }
             });
 
             threads[i].start();
 
         }
-        System.out.println(ClassLayout.parseInstance(race).toPrintable());
+//        System.out.println(ClassLayout.parseInstance(race).toPrintable());
         while (Thread.activeCount() > 1) {
             Thread.yield();
         }
-        System.out.println(ClassLayout.parseInstance(race).toPrintable());
+//        System.out.println(ClassLayout.parseInstance(race).toPrintable());
         System.out.println("total num is " + race);
 
 //        t1.start();
 //        Thread.sleep(2000);
 //        t2.start();
-
 
     }
 

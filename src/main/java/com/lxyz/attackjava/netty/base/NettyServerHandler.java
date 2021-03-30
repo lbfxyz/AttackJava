@@ -25,6 +25,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         log.info("收到信息客户端{}的消息，【{}】", ctx.channel().remoteAddress(), msg.toString());
+        System.err.println("server ctx channel id ----> " + ctx.channel().id());
         ctx.writeAndFlush(msg.toString() + "--" + new Random().nextInt(100));
     }
 }

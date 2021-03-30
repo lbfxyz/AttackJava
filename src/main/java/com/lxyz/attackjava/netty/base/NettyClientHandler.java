@@ -16,6 +16,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println(ctx.channel().id() + "");
         ctx.writeAndFlush("Hello, I'm " + ctx.channel().remoteAddress());
         ctx.fireChannelActive();
     }
