@@ -25,6 +25,8 @@
 
     <modules>
         <module>mq</module>
+        <module>multithreading</module>
+        <module>netty</module>
     </modules>
 
     <dependencies>
