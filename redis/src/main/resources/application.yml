@@ -3,3 +3,7 @@ spring:
     sentinel:
       master: redis-master
       nodes: 192.168.100.5:26379,192.168.100.6:26379,192.168.100.7:26379
+  redisson:
+    file: classpath:redisson.yaml
+server:
+  port: 8100
