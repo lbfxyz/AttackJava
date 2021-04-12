@@ -4,10 +4,9 @@ sentinelServersConfig:
   readMode: "SLAVE"
   masterName: "redis-master"
   sentinelAddresses:
-  - "redis://192.168.100.5:26379"
-  - "redis://192.168.100.6:26379"
-  - "redis://192.168.100.7:26379"
-  retryInterval: 1500
+    - "redis://192.168.100.5:26379"
+    - "redis://192.168.100.6:26379"
+    - "redis://192.168.100.7:26379"
   timeout: 30000
   masterConnectionPoolSize: 64
   slaveConnectionPoolSize: 64

@@ -38,6 +38,8 @@ public class RedisController {
                 System.out.println("库存不足");
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
             lock.unlock();
         }
         return "OK";
