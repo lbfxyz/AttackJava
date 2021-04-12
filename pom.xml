@@ -28,6 +28,7 @@
         <module>multithreading</module>
         <module>netty</module>
         <module>redis</module>
+        <module>basics</module>
     </modules>
 
     <dependencies>
