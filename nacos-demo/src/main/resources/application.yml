@@ -1,3 +1,6 @@
 nacos:
   config:
     server-addr: 192.168.100.5:8848
+
+server:
+  port: 7500
