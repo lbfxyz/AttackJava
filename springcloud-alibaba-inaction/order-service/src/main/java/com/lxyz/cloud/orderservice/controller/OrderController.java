@@ -4,10 +4,7 @@ import com.lxyz.cloud.orderservice.feign.api.StockService;
 import com.lxyz.cloud.orderservice.form.OrderForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -27,14 +24,14 @@ public class OrderController {
 
     @GetMapping("/stock/reduce")
     public String reduceStock() {
-        this.restTemplate.getForObject("http://stock-service/stock/reduce", String.class);
+        this.restTemplate.getForObject("http://stock-service/stock/reduce?productId=1&reduceStock=1", String.class);
         return "OK";
     }
 
 
     @PostMapping("/create")
-    public String createOrder(OrderForm orderForm) {
-        stockService.reduceStock(orderForm.getUserId(), orderForm.getProductId());
+    public String createOrder(@RequestBody OrderForm orderForm) {
+        stockService.reduceStock(orderForm.getUserId(), orderForm.getProductCount());
         return "OK";
     }
 

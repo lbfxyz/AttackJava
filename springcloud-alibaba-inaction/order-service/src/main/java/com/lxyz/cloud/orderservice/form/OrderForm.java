@@ -17,6 +17,8 @@ public class OrderForm {
     private String  productId;
 
 
+    private Integer productCount;
+
     private Integer credit;
 
 }
