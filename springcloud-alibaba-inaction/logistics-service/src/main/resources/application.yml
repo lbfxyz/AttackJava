@@ -1,0 +1,10 @@
+server:
+  port: 9007
+
+spring:
+  application:
+    name: logistics-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.100.5:8848

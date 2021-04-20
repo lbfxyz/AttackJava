@@ -1,5 +1,7 @@
 package com.lxyz.cloud.orderservice.controller;
 
+import com.lxyz.cloud.orderservice.feign.api.LogisticsService;
+import com.lxyz.cloud.orderservice.feign.api.ScoreService;
 import com.lxyz.cloud.orderservice.feign.api.StockService;
 import com.lxyz.cloud.orderservice.form.OrderForm;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,10 @@ public class OrderController {
 
     @Autowired
     private StockService stockService;
+    @Autowired
+    private ScoreService scoreService;
+    @Autowired
+    private LogisticsService logisticsService;
 
     @GetMapping("/stock/reduce")
     public String reduceStock() {
@@ -31,10 +37,17 @@ public class OrderController {
 
     @PostMapping("/create")
     public String createOrder(@RequestBody OrderForm orderForm) {
-        stockService.reduceStock(orderForm.getUserId(), orderForm.getProductCount());
+        // 减库存
+        String stockResult = stockService.reduceStock(orderForm.getUserId(), orderForm.getProductCount());
+        System.out.println("stockResult ->" + stockResult);
+        // 添加积分
+        String scoreResult = scoreService.addScore(orderForm);
+        System.out.println(scoreResult);
+        // 添加物流单
+        String logisticsResult = logisticsService.add(orderForm);
+        System.out.println(logisticsResult);
         return "OK";
     }
-
 
 
 

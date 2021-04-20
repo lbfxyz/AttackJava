@@ -1,4 +1,4 @@
-package com.lxyz.cloud.orderservice.form;
+package com.lxyz.cloud.logisticsservice.form;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

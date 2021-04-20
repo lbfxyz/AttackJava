@@ -1,0 +1,9 @@
+server:
+  port: 9005
+spring:
+  application:
+    name: score-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.100.5:8848

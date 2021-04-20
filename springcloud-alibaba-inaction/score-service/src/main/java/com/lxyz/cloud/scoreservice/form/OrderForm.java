@@ -1,4 +1,4 @@
-package com.lxyz.cloud.orderservice.form;
+package com.lxyz.cloud.scoreservice.form;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,6 @@ public class OrderForm {
     private String userId;
 
     private String  productId;
-
 
     private Integer productCount;
 
