@@ -1,15 +1,15 @@
 package com.lxyz.cloud.orderservice.feign.api;
 
+import com.lxyz.cloud.orderservice.feign.callback.ScoreServiceFallbackImpl;
 import com.lxyz.cloud.orderservice.form.OrderForm;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @author lbf
  * @date 2021/4/20
  */
-@FeignClient("score-service")
+@FeignClient(value = "score-service",fallback = ScoreServiceFallbackImpl.class)
 public interface ScoreService {
 
 
