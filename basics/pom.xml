@@ -15,6 +15,11 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.lxyz</groupId>
+            <artifactId>lxzy-core-test</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

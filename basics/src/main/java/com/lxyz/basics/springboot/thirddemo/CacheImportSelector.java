@@ -15,6 +15,16 @@ public class CacheImportSelector implements ImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
         Map<String, Object> annotationAttributes = importingClassMetadata.getAnnotationAttributes(EnableDefineService.class.getName());
-        return new String[0];
+
+        Class[] clazz = (Class[]) annotationAttributes.get("name");
+        if (clazz.length > 0) {
+            String[] s = new String[clazz.length];
+            for (int i = 0; i < clazz.length; i++) {
+                s[i] = clazz[i].getName();
+            }
+            return s;
+        }
+
+        return new String[]{CacheService.class.getName()};
     }
 }
